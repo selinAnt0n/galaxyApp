@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script src="js/snap.svg-min.js"></script>
+	<script src="js/jquery-3.1.1.min.js"></script>
+
+	<!-- <script src="js/d3.min.js"></script> -->
+	<style>
+		html {
+			height: 100%;
+		}
+		body {
+			height: 100%;
+			min-height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: row;
+			flex-wrap:wrap;
+		}
+		svg {
+			border:10px solid #999;
+			display: block;
+			margin:0 auto;
+			border-radius: 20px;
+		}
+	</style>
+</head>
+<body>
+	
+
+
+		
+
+
+
+
+	<script>
+		
+
+
+
+
+
+	</script>
+
+
+
+	<script>
+
+
+
+		// function randomInteger(min, max) {
+		//     var rand = min - 0.5 + Math.random() * (max - min + 1)
+		//     rand = Math.round(rand);
+		//     return rand;
+		//  }
+
+
+		// let width =1550;
+		// let height = 800;
+		// var a = Snap(width,height);
+		// var arr = [
+		// 	["Первый",1],
+		// 	["Первый",2],
+		// 	["Первый",2],
+		// 	["Первый",2],
+		// 	["Первый",2],
+		// 	["Первый",2],
+		// 	["Первый",2],
+		// 	["Первый",2],
+		// 	["Первый",2],
+		// 	["Первый",2],
+		// ];
+
+
+
+
+
+
+		// function render(arr) {
+
+		// 	var nodeArr = [],
+		// 		lineArr = [];
+
+		// 	var style = {
+		// 		fill: "#387",
+		// 		stroke: "#fff",
+		// 		strokeWidth:5
+		// 	}
+
+		// 	var styleLine = {
+		// 		fill: "#387",
+		// 		stroke: "#387",
+		// 		strokeWidth:2
+		// 	}
+
+
+		// 	let count = 0 ;
+
+		// 	var path = a.path().attr(style);
+
+
+
+
+
+
+
+		// 	function checkPosition (nodeArr,X,Y) {
+
+		// 		if (!nodeArr.length) {
+		// 			return [X,Y];
+		// 		}
+
+		// 		var flag = true;
+
+		// 		for (var i = 0;i < nodeArr.length;i++) {
+
+		// 			let opo1 = (X > (nodeArr[i][1] + 40)) ||  (X < (nodeArr[i][1] - 40));
+
+		// 			let opo2 = (Y > (nodeArr[i][2] + 40)) || (Y < (nodeArr[i][2] - 40));
+
+		// 			if (  opo1  ||  opo2  )    {		
+
+		// 			} else {
+		// 				flag = false;
+						
+		// 			}
+
+		// 		}
+
+		// 		if (!flag) {
+
+		// 			checkPosition(nodeArr,X+20,Y+20);
+		// 			// return false;
+		// 		} else {
+		// 			return [X,Y];
+		// 		}
+
+		// 	}
+
+
+		// 	function renderNode (arr,nodeArr) {
+
+		// 		for (var k = 0; k < arr.length;k++) {
+
+		// 			var path = a.path().attr(styleLine);
+		// 			lineArr.push(path);
+
+		// 		}
+
+		// 		for (var i = 0; i < arr.length;i++) {
+
+		// 			if (i == 0) {
+		// 				var randX = 0;
+		// 				var randY = 0;
+		// 			} else {
+		// 				var randX = randomInteger(50,1500);
+		// 				var randY = randomInteger(50,750);
+
+		// 				var randX = i*50;
+		// 				var randY = i*randomInteger(50,80);
+		// 			}
+
+
+
+
+		// 			var check = checkPosition(nodeArr,randX,randY);
+					 
+		// 			if (typeof check == "object" || check ) {
+
+		// 				var circle = a.circle(check[0],check[1], 20).attr(style);
+
+		// 			} else {
+
+		// 				console.log("Не влез");
+
+		// 			}
+				
+
+		// 			var t1 = a.text(randX - 5, randY + 5,  ++count).attr({
+		// 				fill:"#000",
+		// 			});
+
+		// 			var miniArr = [];
+		// 			miniArr.push(i,randX,randY);
+
+		// 			nodeArr.push(miniArr);
+		// 		}
+
+
+		// 	}
+
+		// 	function renderLine (nodeArssr,lineArr) {
+
+		// 		for (var i = 0; i < nodeArr.length;i++) {
+		// 			if (i == (nodeArr.length - 1)) {
+						
+		// 			} else {
+		// 			 	lineArr[i].attr({
+		// 					d: "M " + nodeArr[i][1] + "," + nodeArr[i][2] + " T "+ nodeArr[i+1][1]  +","+ nodeArr[i+1][2]
+		// 				});
+		// 			}
+		// 		}
+
+		// 	}
+
+		// 	renderNode(arr,nodeArr);
+		// 	renderLine(nodeArr,lineArr);
+
+		// }
+
+
+
+		// render(arr);
+
+
+
+
+
+
+
+
+
+		var allItem = [
+			"item1",[
+				["item2",[
+					["item21",[]],
+					["item22",[]],
+					['item23',[]]
+				]],
+				['item3',[
+					['item31',[]],
+					['item32',[]],
+					['item33',[]]
+				]]
+			],
+		];
+
+
+		
+
+
+
+		var galaxy = {
+			lvl : 1,
+			style: {
+				fill: "#387",
+				stroke: "#fff",
+				strokeWidth:5
+			},
+			styleLine: {
+				fill: "#387",
+				stroke: "#387",
+				strokeWidth:2
+			},
+			nodeArr: [],
+			lineArr: [],
+			count: 0,
+			widnth: 1550,
+			height: 800,
+			a: Snap(this.width,this.height),
+			randomInteger: function (min, max) {
+
+				var rand = min - 0.5 + Math.random() * (max - min + 1)
+				rand = Math.round(rand);
+				return rand;
+
+			},
+			parseArr: function (arr,lvl,remembWay) {
+
+
+				if (arr.length > 0) {
+				
+					var str = "_";
+					for (var k = 0;k < lvl;k++) {
+						str = lvl + "_";
+					}
+
+					console.log(str,arr[0],remembWay);
+
+					this.renderNode(arr[0],lvl);
+					this.renderLine(lvl,remembWay);
+
+					this.createData(arr[1],lvl);
+				} else {
+
+				}
+			},
+
+			createData: function (arr,lvl) {
+				let remembWay = lvl;
+				lvl++;
+
+
+
+				if (typeof arr[0] == "object") {
+
+					for (var i =0;i < arr.length;i++) {
+
+						this.parseArr(arr[i],lvl,remembWay);
+
+					}
+				} else {
+
+					this.parseArr(arr,lvl,remembWay);
+
+				}
+			},
+
+
+
+			renderLine: function (lvl,remembWay) {
+
+				for (var i =0; i < this.nodeArr;i++) {
+
+					
+
+				}
+
+			},
+
+			renderNode: function (elem,lvl) {
+
+
+				var randX = lvl*this.randomInteger((lvl + 3)* 10,(lvl + 10) * 10);
+				var randY = lvl*this.randomInteger((lvl + 3)* 10,(lvl + 10) * 10);
+
+				this.nodeArr.push([lvl,randX,randY]);
+
+				let ap = (5 - lvl);
+
+
+				var circle = this.a.circle(randX,randY, ap * 10).attr(this.style);
+
+				var t1 = this.a.text(randX - 5, randY + 5, elem).attr({
+					fill:"#000",
+				});
+
+
+			},
+
+			checkPosition: function (nodeArr,X,Y) {
+				if (!nodeArr.length) {
+					return [X,Y];
+				}
+
+				var flag = true;
+
+				for (var i = 0;i < nodeArr.length;i++) {
+
+					let opo1 = (X > (nodeArr[i][1] + 40)) ||  (X < (nodeArr[i][1] - 40));
+
+					let opo2 = (Y > (nodeArr[i][2] + 40)) || (Y < (nodeArr[i][2] - 40));
+
+					if (  opo1  ||  opo2  )    {		
+
+					} else {
+						flag = false;
+						
+					}
+
+				}
+
+				if (!flag) {
+
+					this.checkPosition(nodeArr,X+20,Y+20);
+
+				} else {
+					return [X,Y];
+				}
+			},
+		}
+
+		galaxy.parseArr(allItem,galaxy.lvl);
+
+
+
+
+
+
+	</script>
+</body>
+</html>
