@@ -8,6 +8,10 @@
 	<script src="js/jquery-3.1.1.min.js"></script>
 
 	<!-- <script src="js/d3.min.js"></script> -->
+
+
+
+
 	<style>
 		html {
 			height: 100%;
@@ -38,20 +42,8 @@
 
 
 
-	<script>
-		
-
-
-
-
-
-	</script>
-
-
 
 	<script>
-
-
 
 		// function randomInteger(min, max) {
 		//     var rand = min - 0.5 + Math.random() * (max - min + 1)
@@ -224,7 +216,6 @@
 
 
 
-
 		var allItem = [
 			"item1",[
 				["item2",[
@@ -239,9 +230,6 @@
 				]]
 			],
 		];
-
-
-		
 
 
 
@@ -270,21 +258,17 @@
 				return rand;
 
 			},
-			parseArr: function (arr,lvl,remembWay) {
+			parseArr: function (arr,lvl,remembWay,id) {
 
 
 				if (arr.length > 0) {
-				
+
 					var str = "_";
 					for (var k = 0;k < lvl;k++) {
 						str = lvl + "_";
 					}
 
-					console.log(str,arr[0],remembWay);
-
-					this.renderNode(arr[0],lvl);
-					this.renderLine(lvl,remembWay);
-
+					this.renderNode(arr[0],lvl,id);
 					this.createData(arr[1],lvl);
 				} else {
 
@@ -300,8 +284,8 @@
 				if (typeof arr[0] == "object") {
 
 					for (var i =0;i < arr.length;i++) {
-
-						this.parseArr(arr[i],lvl,remembWay);
+						var id = lvl + "_" + i;
+						this.parseArr(arr[i],lvl,remembWay,id);
 
 					}
 				} else {
@@ -313,26 +297,52 @@
 
 
 
-			renderLine: function (lvl,remembWay) {
+			renderLine: function (lvl,remembWay,id) {
 
-				for (var i =0; i < this.nodeArr;i++) {
+				//=========================================
+				// ПРОДОЛЖИТЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				//=========================================
 
-					
+				for (var k = 0;k < this.nodeArr.length;k++) {
+
+					var parent;
+					k == 0 ? parent = "1_0" : this.nodeArr[k][1]
+
+
+					console.log(parent);
+					parent = parent.split("_"); 
+
+					for (var j = 1;j < this.nodeArr.length;j++) {
+
+						var arrBox = this.nodeArr[j][1];
+
+						console.log(arrBox);
+						arrBox = arrBox.split("_");
+
+						if (arrBox[0]-1 == parent[0]) {
+							console.log('da');
+						}
+
+					}
 
 				}
 
+				// this.a = 
+				// lineArr[i].attr({
+				// 	d: "M " + nodeArr[i][1] + "," + nodeArr[i][2] + " T "+ nodeArr[i+1][1]  +","+ nodeArr[i+1][2]
+				// });
+
 			},
 
-			renderNode: function (elem,lvl) {
-
+			renderNode: function (elem,lvl,id) {
 
 				var randX = lvl*this.randomInteger((lvl + 3)* 10,(lvl + 10) * 10);
+
 				var randY = lvl*this.randomInteger((lvl + 3)* 10,(lvl + 10) * 10);
 
-				this.nodeArr.push([lvl,randX,randY]);
+				this.nodeArr.push([lvl,id,randX,randY]);
 
 				let ap = (5 - lvl);
-
 
 				var circle = this.a.circle(randX,randY, ap * 10).attr(this.style);
 
@@ -356,11 +366,11 @@
 
 					let opo2 = (Y > (nodeArr[i][2] + 40)) || (Y < (nodeArr[i][2] - 40));
 
-					if (  opo1  ||  opo2  )    {		
+					if ( opo1 || opo2 ) {
 
 					} else {
 						flag = false;
-						
+
 					}
 
 				}
@@ -370,15 +380,15 @@
 					this.checkPosition(nodeArr,X+20,Y+20);
 
 				} else {
+
 					return [X,Y];
+
 				}
 			},
 		}
 
 		galaxy.parseArr(allItem,galaxy.lvl);
-
-
-
+		galaxy.renderLine();
 
 
 
