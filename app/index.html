@@ -6,10 +6,7 @@
 
 	<script src="js/snap.svg-min.js"></script>
 	<script src="js/jquery-3.1.1.min.js"></script>
-
-	<!-- <script src="js/d3.min.js"></script> -->
-
-
+	
 
 
 	<style>
@@ -231,8 +228,6 @@
 			],
 		];
 
-
-
 		var galaxy = {
 			lvl : 1,
 			style: {
@@ -270,17 +265,12 @@
 
 					this.renderNode(arr[0],lvl,id);
 					this.createData(arr[1],lvl);
-				} else {
-
 				}
 			},
 
 			createData: function (arr,lvl) {
 				let remembWay = lvl;
 				lvl++;
-
-
-
 				if (typeof arr[0] == "object") {
 
 					for (var i =0;i < arr.length;i++) {
@@ -306,6 +296,7 @@
 				for (var k = 0;k < this.nodeArr.length;k++) {
 
 					var parent;
+
 					k == 0 ? parent = "1_0" : this.nodeArr[k][1]
 
 
