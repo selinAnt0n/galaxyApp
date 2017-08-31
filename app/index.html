@@ -255,26 +255,36 @@
 			},
 			parseArr: function (arr,lvl,remembWay,id) {
 
-
 				if (arr.length > 0) {
 
-					var str = "_";
-					for (var k = 0;k < lvl;k++) {
-						str = lvl + "_";
-					}
+					// var str = "_";
+					// for (var k = 0;k < lvl;k++) {
+					// 	str = lvl + "_";
+					// }
+
+
+					
 
 					this.renderNode(arr[0],lvl,id);
 					this.createData(arr[1],lvl);
+
 				}
 			},
 
 			createData: function (arr,lvl) {
 				let remembWay = lvl;
+
+				
 				lvl++;
+
 				if (typeof arr[0] == "object") {
 
 					for (var i =0;i < arr.length;i++) {
+
 						var id = lvl + "_" + i;
+
+						remembWay = remembWay + "_" + i;
+
 						this.parseArr(arr[i],lvl,remembWay,id);
 
 					}
@@ -293,35 +303,48 @@
 				// ПРОДОЛЖИТЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				//=========================================
 
-				for (var k = 0;k < this.nodeArr.length;k++) {
 
-					var parent;
+				for (var t =0 ;t < this.nodeArr.length-1;t++) {
 
-					k == 0 ? parent = "1_0" : this.nodeArr[k][1]
-
-
-					console.log(parent);
-					parent = parent.split("_"); 
-
-					for (var j = 1;j < this.nodeArr.length;j++) {
-
-						var arrBox = this.nodeArr[j][1];
-
-						console.log(arrBox);
-						arrBox = arrBox.split("_");
-
-						if (arrBox[0]-1 == parent[0]) {
-							console.log('da');
-						}
-
-					}
+					this.lineArr.push( this.a.path() );
 
 				}
 
-				// this.a = 
-				// lineArr[i].attr({
-				// 	d: "M " + nodeArr[i][1] + "," + nodeArr[i][2] + " T "+ nodeArr[i+1][1]  +","+ nodeArr[i+1][2]
-				// });
+				console.log(this.nodeArr);
+
+				let count = 0;
+
+
+
+				let assocArr = [];
+
+				for (var k = 0;k < this.lineArr.length;k++) {
+
+
+					if ( assocArr.indexOf( this.nodeArr[k][1] == -1) ) {
+
+						assocArr.push( this.nodeArr[k][1] );
+
+					}
+
+
+				}
+				console.log( assocArr );
+
+
+
+
+
+
+
+
+				// console.log( this.lineArr );
+
+				// this.a = this.lineArr[k].attr({
+				// 			d: "M " + nodeArr[k][1] + "," + nodeArr[k][2] + " T "+ nodeArr[j+1][1]  +","+ nodeArr[j+1][2]
+				//});
+
+				
 
 			},
 
@@ -340,6 +363,8 @@
 				var t1 = this.a.text(randX - 5, randY + 5, elem).attr({
 					fill:"#000",
 				});
+
+				var g = this.a.g(circle,t1).drag((dx) => g.transform( 'r' + dx));
 
 
 			},
